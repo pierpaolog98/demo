@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-service
+spec:
+  selector:
+    app: demo
+  ports:
+    - protocol: TCP
+      port: 80           # porta esposta dal service
+      targetPort: 8080   # porta del container
+      nodePort: 30000
+  type: NodePort
