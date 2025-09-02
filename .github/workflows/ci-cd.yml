@@ -48,10 +48,8 @@ jobs:
           version: 'latest'
 
       - name: Update kubeconfig
-        uses: aws-actions/eks-update-kubeconfig@v2
-        with:
-          cluster-name: demo-cluster
-          region: eu-west-1
+        run: |
+          aws eks --region eu-west-1 update-kubeconfig --name demo-cluster
 
       - name: Deploy to EKS
         run: |
