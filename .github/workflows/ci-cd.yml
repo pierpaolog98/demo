@@ -19,8 +19,11 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Build with Maven
-        run: mvn clean package
+      #- name: Build with Maven
+        #run: mvn clean package
+
+      - name: Run unit tests
+        run: ./mvnw test
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
