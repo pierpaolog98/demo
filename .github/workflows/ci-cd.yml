@@ -36,11 +36,25 @@ jobs:
           docker build -t pierpaolog98/demo-image:latest .
           docker push pierpaolog98/demo-image:latest
 
-      - name: Start Minikube
-        uses: manusa/actions-setup-minikube@v3
+      - name: Set up Minikube
+        uses: medyagh/setup-minikube@latest
         with:
           minikube-version: 'v1.30.1'
-          driver: docker
+          kubernetes-version: 'v1.21.0'
+
+      - name: Load Docker image into Minikube
+        run: |
+          minikube image load pp/demo-image:latest
+
+      - name: Deploy to Minikube
+        run: |
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+          kubectl rollout status deployment/demo-deployment
+
+      - name: Get Minikube service URL
+        run: |
+          minikube service demo-service --url
 
 
 
