@@ -18,8 +18,8 @@ public class MyController {
 
     @GetMapping("/hello")
     public String sayHello() throws UnknownHostException {
-        return InetAddress.getLocalHost().getHostName();
-        //return myService.sayHello();
+        //return InetAddress.getLocalHost().getHostName();
+        return myService.sayHello();
     }
 
 }
