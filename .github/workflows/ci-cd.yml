@@ -44,7 +44,7 @@ jobs:
 
       - name: Load Docker image into Minikube
         run: |
-          minikube image load pp/demo-image:latest
+          minikube image load pierpaolog98/demo-image:latest
 
       - name: Deploy to Minikube
         run: |
